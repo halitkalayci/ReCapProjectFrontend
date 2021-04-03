@@ -1,0 +1,17 @@
+<div class="mt-5">
+    <app-spinner *ngIf="dataLoaded==false"></app-spinner>
+    <table class="table" *ngIf="dataLoaded==true">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Renk Adı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let color of colors">
+            <th scope="row">{{color.id}}</th>
+            <td>{{color.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -1,0 +1,21 @@
+<div class="mt-5">
+    <app-spinner *ngIf="dataLoaded==false"></app-spinner>
+    <table class="table" *ngIf="dataLoaded==true">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Müşteri Tam Adı</th>
+            <th scope="col">Müşteri Email</th>
+            <th scope="col">Müşteri Şirket Adı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <th scope="row">{{customer.id}}</th>
+            <td>{{customer.firstName}} {{customer.lastName}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.companyName}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

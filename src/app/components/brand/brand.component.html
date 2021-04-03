@@ -1,0 +1,17 @@
+<div class="mt-5">
+    <app-spinner *ngIf="dataLoaded==false"></app-spinner>
+    <table class="table" *ngIf="dataLoaded==true">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Marka Adı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let brand of brands">
+            <th scope="row">{{brand.id}}</th>
+            <td>{{brand.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
