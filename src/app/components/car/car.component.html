@@ -1,25 +1,32 @@
-<div class="mt-5">
-    <app-spinner *ngIf="dataLoaded==false"></app-spinner>
-    <table class="table" *ngIf="dataLoaded==true">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Araç Adı</th>
-            <th scope="col">Model Yılı</th>
-            <th scope="col">Günlük Ücreti</th>
-            <th scope="col">Marka Adı</th>
-            <th scope="col">Renk Adı</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let car of cars">
-            <th scope="row">{{car.id}}</th>
-            <td>{{car.carName}}</td>
-            <td>{{car.modelYear}}</td>
-            <td>{{car.dailyPrice}}</td>
-            <td>{{car.brandName}}</td>
-            <td>{{car.colorName}}</td>
-          </tr>
-        </tbody>
-      </table>
-</div>
+
+  <div class="row">
+    <div class="col-md-3">
+ <app-brand></app-brand>
+ <app-color></app-color>
+    </div>
+    <div class="col-md-9">
+      <app-spinner *ngIf="dataLoaded==false"></app-spinner>
+      <table class="table" *ngIf="dataLoaded==true">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Araç Adı</th>
+              <th scope="col">Model Yılı</th>
+              <th scope="col">Günlük Ücreti</th>
+              <th scope="col">Marka Adı</th>
+              <th scope="col">Renk Adı</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let car of cars" routerLink="/cars/detail/{{car.id}}">
+              <th scope="row">{{car.id}}</th>
+              <td>{{car.carName}}</td>
+              <td>{{car.modelYear}}</td>
+              <td>{{car.dailyPrice}}</td>
+              <td>{{car.brandName}}</td>
+              <td>{{car.colorName}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>

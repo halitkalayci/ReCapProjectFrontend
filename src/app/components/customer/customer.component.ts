@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
-import { CustomerResponseModel } from 'src/app/models/customerResponseModel';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customer',
@@ -10,18 +9,16 @@ import { CustomerResponseModel } from 'src/app/models/customerResponseModel';
 })
 export class CustomerComponent implements OnInit {
 
-  apiUrl:string = "https://localhost:44304/api/customers/getdetails";
   customers:Customer[] =[];
-  customerResponseModel:CustomerResponseModel={
-    message:"",
-    success:false,
-    data:this.customers
-  };
   dataLoaded = false;
-  constructor(private httpClient:HttpClient) { }
+  constructor(private customerService : CustomerService) { }
 
   ngOnInit(): void {
-    this.httpClient.get<CustomerResponseModel>(this.apiUrl).subscribe((c)=> {
+    this.getCustomers();
+  }
+
+  private getCustomers() {
+    this.customerService.getCustomers().subscribe(c => {
       this.customers = c.data;
       this.dataLoaded = true;
     });

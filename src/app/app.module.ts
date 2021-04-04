@@ -11,6 +11,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { CardetailComponent } from './components/cardetail/cardetail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RentalComponent } from './components/rental/rental.component';
     SpinnerComponent,
     ColorComponent,
     CustomerComponent,
-    RentalComponent
+    RentalComponent,
+    CardetailComponent
   ],
   imports: [
     BrowserModule,

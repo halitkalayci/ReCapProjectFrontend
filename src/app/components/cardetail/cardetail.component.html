@@ -1,0 +1,29 @@
+
+<div class="row">
+    <div class="col-6">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item" *ngFor="let carimage of carImages; index as imgInd;" [ngClass]="{'active':imgInd==0}">
+                <img src="https://localhost:44304/images/{{carimage.imagePath}}" class="d-block w-100" alt="...">
+              </div>
+       
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+    <div class="col-6" *ngIf="dataLoaded==true">
+        <p class="text-muted mb-0 mt-0">#{{car.id}}</p>
+        <h1 class="text-primary ml-0"> Marka : {{car.brandName}}</h1>
+        <h1 class="text-primary"> Model : {{car.carName}} </h1>
+        <h3>Model Yılı : {{car.modelYear}}</h3>
+        <h5>Günlük Kira Ücreti : {{car.dailyPrice}} &#8378;</h5>
+        <h5>Renk : {{car.colorName}}</h5>
+    </div>
+</div>

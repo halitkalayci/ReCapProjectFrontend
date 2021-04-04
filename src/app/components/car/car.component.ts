@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
-import { CarResponseModel } from 'src/app/models/carResponseModel';
+import { CarService } from 'src/app/services/car.service';
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
@@ -9,21 +10,48 @@ import { CarResponseModel } from 'src/app/models/carResponseModel';
 })
 export class CarComponent implements OnInit {
 
-  apiUrl:string = "https://localhost:44304/api/cars/getalldetails";
   cars:Car[] =[];
-  carResponseModel:CarResponseModel={
-    message:"",
-    success:false,
-    data:this.cars
-  };
+  currentBrand:Brand;
   dataLoaded = false;
-  constructor(private httpClient:HttpClient) { }
+  constructor(private carService:CarService, private activatedRoute:ActivatedRoute) {
+
+   }
 
   ngOnInit(): void {
-    this.httpClient.get<CarResponseModel>(this.apiUrl).subscribe((c)=> {
-      this.cars = c.data;
-      this.dataLoaded = true;
-    });
+    this.fillPage();
   }
 
+  fillPage() {
+    this.activatedRoute.params.subscribe(params => {
+      if (params["brandId"]) {
+        this.getCarsByBrandId(params["brandId"]);
+      }
+      else if (params["colorId"]) {
+        this.getCarsByColorId(params["colorId"]);
+      }
+      else {
+        this.getCars();
+      }
+    });
+    console.log(this.cars);
+  }
+
+  getCars(){
+    this.carService.getCars().subscribe(c=>{
+      this.cars=c.data;
+      this.dataLoaded=true;
+    });
+  }
+  getCarsByBrandId(brandId:number){
+    this.carService.getCarsByBrandId(brandId).subscribe(c=>{
+      this.cars=c.data;
+      this.dataLoaded=true;
+    })
+  }
+  getCarsByColorId(colorId:number){
+    this.carService.getCarsByColorId(colorId).subscribe(c=>{
+      this.cars=c.data;
+      this.dataLoaded=true;
+    })
+  }
 }
