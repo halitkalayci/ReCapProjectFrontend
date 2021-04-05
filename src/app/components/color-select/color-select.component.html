@@ -1,0 +1,4 @@
+<select class="form-select w-75" #select (change)="onChange(select.value)" aria-label="Renk Seç">
+    <option selected disabled>Renk Seç</option>
+    <option *ngFor="let color of colors" value="{{color.id}}" >{{color.name}}</option>
+  </select>

@@ -19,7 +19,7 @@ export class RentalComponent implements OnInit {
 
 
   private getRentals() {
-    this.rentalService.getCars().subscribe(c => {
+    this.rentalService.getRentals().subscribe(c => {
       this.rentals = c.data;
       this.dataLoaded = true;
     });

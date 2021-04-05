@@ -10,12 +10,14 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
 
+  searchText:string;
   cars:Car[] =[];
   currentBrand:Brand;
   dataLoaded = false;
-  constructor(private carService:CarService, private activatedRoute:ActivatedRoute) {
+  brandId:string;
+  colorId:string;
 
-   }
+  constructor(private carService:CarService, private activatedRoute:ActivatedRoute) {   }
 
   ngOnInit(): void {
     this.fillPage();
@@ -33,7 +35,6 @@ export class CarComponent implements OnInit {
         this.getCars();
       }
     });
-    console.log(this.cars);
   }
 
   getCars(){
@@ -53,5 +54,16 @@ export class CarComponent implements OnInit {
       this.cars=c.data;
       this.dataLoaded=true;
     })
+  }
+  onColorChange(colorId:string){
+    this.colorId = colorId;
+  }
+  onBrandChange(brandId:string){
+    this.brandId=brandId;
+  }
+  applyFilters(){
+     this.carService.getCarByFilters(this.brandId,this.colorId).subscribe(c=>{
+       this.cars = c.data;
+     })
   }
 }

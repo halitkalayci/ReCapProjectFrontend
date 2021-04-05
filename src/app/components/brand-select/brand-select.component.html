@@ -1,0 +1,4 @@
+<select class="form-select w-75" #select (change)="onChange(select.value)" aria-label="Marka Seç">
+    <option selected disabled>Marka Seç</option>
+    <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
+  </select>

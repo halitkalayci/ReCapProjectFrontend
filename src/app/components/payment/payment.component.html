@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-11">
+            <div class="card card0 rounded-0">
+                <div class="row">
+                    <div class="col-md-5 d-md-block d-none p-0 box">
+                        <div class="card rounded-0 border-0 card1" id="bill">
+                            <h3 id="heading1">Kiralama Özeti</h3>
+                            <div class="row">
+                                <div class="col-lg-12 col-8 mt-4  pl-4">
+                                    <h2 class="bill-head"> Araba : {{car.brandName}} {{car.carName}} </h2>
+                                </div>
+                                <div class="col-lg-12 col-8 mt-4  pl-4">
+                                    <h2 class="bill-head"> Kiralama Tarihleri : <br> {{rental.RentDate |date :'dd.MM.yyyy'}} - {{rental.ReturnDate |date :'dd.MM.yyyy'}} </h2>
+                                    <h5 class="text-white">Toplam {{days}} gün</h5>
+                                </div>
+                                <div class="col-lg-12 col-8 mt-4  pl-4">
+                                    <h2 class="bill-head"> Günlük Ücret : {{car.dailyPrice |currency:'₺ '}} </h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 red-bg">
+                                    <p class="bill-date" id="total-label">Toplam Ücret</p>
+                                    <h2 class="bill-head" id="total">{{totalPrice |vatAdded:18 |currency:'₺'}}</h2> <small class="bill-date" id="total-label">Kdv Dahildir</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 p-0 box">
+                        <div class="card rounded-0 border-0 card2" id="paypage">
+                            <div class="form-card">
+                                <h2 id="heading2" class="text-danger">Ödeme Yöntemlerimiz</h2>
+                                <div class="radio-group">
+                                    <div class='radio' data-value="credit"><img src="https://i.imgur.com/28akQFX.jpg" width="200px" height="60px"></div>
+                                </div> <label class="pay">Kart Üzerindeki İsim</label> <input type="text" name="holdername" placeholder="John Smith" [(ngModel)]="cartName">
+                                <div class="row">
+                                    <div class="col-8 col-md-6"> <label class="pay">Kart Numarası</label> <input type="text" name="cardno" id="cr_no" [(ngModel)]="cartNumber" placeholder="0000-0000-0000-0000" minlength="19" maxlength="19"> </div>
+                                    <div class="col-4 col-md-6"> <label class="pay">CVV</label> <input type="text" name="cvcpwd" [(ngModel)]="cartCvv" placeholder="&#9679;&#9679;&#9679;" class="placeicon" minlength="3" maxlength="3"> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"> <label class="pay">Son Kullanma Tarihi</label> </div>
+                                    <div class="col-md-6"> <input type="text" name="exp" id="exp" placeholder="MM" [(ngModel)]="cartExpireMonth" minlength="2" maxlength="2"> </div>
+                                    <div class="col-md-6"> <input type="text" name="exp2" id="exp2" placeholder="yyyy" [(ngModel)]="cartExpireYear" minlength="4" maxlength="4"> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6"> <input type="submit" value="Ödeme Yap" (click)="commit()" class="btn btn-info placeicon"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
