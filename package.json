@@ -19,9 +19,12 @@
     "@angular/platform-browser": "~11.2.7",
     "@angular/platform-browser-dynamic": "~11.2.7",
     "@angular/router": "~11.2.7",
-    "bootstrap": "^5.0.0-beta3",
+    "bootstrap": "^4.1.3",
     "jquery": "^3.6.0",
+    "ngx-owl-carousel": "^2.0.7",
+    "ngx-owl-carousel-o": "^5.0.0",
     "ngx-toastr": "^13.2.1",
+    "owl.carousel": "^2.3.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
