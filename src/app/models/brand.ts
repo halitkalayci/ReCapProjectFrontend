@@ -1,4 +1,5 @@
 export interface Brand{
     id:number;
-    name:string;
+    name:number;
+    picturePath:string;
 }

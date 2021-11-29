@@ -1,0 +1,31 @@
+<div class="rent-item mb-4 ">
+    <img class="img-fluid mb-4" [src]="imgBasePath + car.mainImage" alt="">
+    <h4 class="text-uppercase mb-1">
+        {{car.brandName}} {{car.carName}} 
+
+       
+    </h4>
+    <small class="mb-3"  *ngIf="car.availableForRent">
+        <i class="fas fa-check-circle cursor-pointer text-success mb-2" style="font-size:15px;" title="Araç Şu An Kiralanabilir"></i>
+        Şu an kiralamaya uygun
+    </small>
+    <small class="mb-3" *ngIf="!car.availableForRent">
+        <i class="fas fa-times-circle cursor-pointer text-danger mb-2" style="font-size:15px;" title="Araç Şu An Kiralanamaz"></i>
+        Şu an kiralanamaz
+    </small>
+    <div class="d-flex justify-content-center mb-4">
+        <div class="px-2">
+            <i class="fa fa-car text-primary mr-1"></i>
+            <span>{{car.modelYear}}</span>
+        </div>
+        <div class="px-2 border-left border-right">
+            <i class="fa fa-cogs text-primary mr-1"></i>
+            <span>{{car.gearType | uppercase}}</span>
+        </div>
+        <div class="px-2">
+            <i class="fa fa-road text-primary mr-1"></i>
+            <span>{{car.km}} KM</span>
+        </div>
+    </div>
+    <a class="btn btn-primary px-3" href="">{{car.dailyPrice | currency:"₺"}} / Gün</a>
+</div>

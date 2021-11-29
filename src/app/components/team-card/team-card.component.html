@@ -1,0 +1,12 @@
+<div class="team-item">
+    <img class="team-img img-fluid w-100" [src]="imgBasePath + teamMember.picture" alt="">
+    <div class="position-relative py-4">
+        <h4 class="text-uppercase">{{teamMember.name | uppercase}} {{teamMember.surname |uppercase}}</h4>
+        <p class="m-0">{{teamMember.role}}</p>
+        <div class="team-social position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+            <a *ngIf="teamMember.twitter" class="btn btn-lg btn-primary btn-lg-square mx-1"   target="_blank" href="{{teamMember.twitter}}"><i class="fab fa-twitter"></i></a>
+            <a *ngIf="teamMember.facebook" class="btn btn-lg btn-primary btn-lg-square mx-1"  target="_blank" href="{{teamMember.facebook}}"><i class="fab fa-facebook-f"></i></a>
+            <a *ngIf="teamMember.linkedIn" class="btn btn-lg btn-primary btn-lg-square mx-1"  target="_blank" href="{{teamMember.linkedIn}}"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</div>

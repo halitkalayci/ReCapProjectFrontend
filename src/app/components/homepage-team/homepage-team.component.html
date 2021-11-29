@@ -1,0 +1,16 @@
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <h1 class="display-1 text-primary text-center">04</h1>
+        <h1 class="display-4 text-uppercase text-center mb-5">Takımımız</h1>
+
+        <owl-carousel-o class="team-carousel position-relative" [options]="customOptions">
+
+            <ng-container >
+              <ng-template carouselSlide *ngFor="let member of teamMembers">
+               <app-team-card [teamMember]="member"></app-team-card>
+              </ng-template>
+            </ng-container>
+        
+          </owl-carousel-o>
+    </div>
+</div>

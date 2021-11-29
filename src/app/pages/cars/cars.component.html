@@ -1,0 +1,19 @@
+ 
+
+<div *ngIf="!loading">
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <h1   #scroll class="display-4 text-uppercase text-center mb-5">Filomuzdaki Araçlar</h1>
+        <div class="row " >
+            <div class="col-lg-4 col-md-6 mb-2" *ngFor="let car of cars">
+                <app-car-card [car]="car"></app-car-card>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <button *ngIf="page!=maxPages" (click)="loadMore()" class="load-more">{{additionalLoading ? "Yükleniyor..." : "Daha Fazla Göster.."}}</button>
+</div> 
+</div>
+<app-two-way-banner></app-two-way-banner>
+<app-brands-carousel></app-brands-carousel>

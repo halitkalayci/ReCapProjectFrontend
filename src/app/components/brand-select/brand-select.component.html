@@ -1,0 +1,5 @@
+<select (change)="onChange($event)" class="custom-select px-4 mb-3" style="height: 50px;">
+    <option selected disabled>Marka</option>
+    <option value="0">Hepsi</option>
+    <option  *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
+</select>

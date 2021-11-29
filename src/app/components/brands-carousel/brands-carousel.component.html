@@ -1,0 +1,40 @@
+
+<div class="container-fluid py-5" *ngIf="brands">
+    <div class="container py-5">
+        <owl-carousel-o class="vendor-carousel" [options]="customOptions">
+
+            <ng-container >
+              <ng-template *ngFor="let brand of brands" carouselSlide >
+                <div class="bg-light w-300 p-4">
+                    <img [src]="imageBasePath + brand.picturePath" alt="">
+                </div>
+              </ng-template>
+            </ng-container>
+        
+          </owl-carousel-o>
+        <div class="owl-carousel vendor-carousel">
+            
+            <div class="bg-light p-4">
+                <img src="img/vendor-2.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="img/vendor-3.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="img/vendor-4.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="img/vendor-5.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="img/vendor-6.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="img/vendor-7.png" alt="">
+            </div>
+            <div class="bg-light p-4">
+                <img src="img/vendor-8.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>

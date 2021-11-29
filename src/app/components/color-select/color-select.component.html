@@ -1,0 +1,5 @@
+<select (change)="onChange($event)" class="custom-select px-4 mb-3" style="height: 50px;">
+    <option disabled selected>Renk</option>
+    <option value="0">Hepsi</option>
+    <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
+</select>

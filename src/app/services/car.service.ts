@@ -1,11 +1,13 @@
+import { CarForListingModel } from './../models/carForListingModel';
+import { PageableResponseModel } from './../models/pageableResponseModel';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AddCarWithImageModel } from '../models/addCarWithImageModel';
 import { Car } from '../models/car';
+import { CarDetailsModel } from '../models/carDetailsModel';
 import { CarImage } from '../models/carImage';
-import { ListResponseModel } from '../models/listResponseModel';
+import { GenericResponseModel } from '../models/genericResponseModel';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 
@@ -14,47 +16,18 @@ import { SingleResponseModel } from '../models/singleResponseModel';
 })
 export class CarService {
 
-  apiUrl: string = environment.apiUrl;
+  apiUrl: string = environment.apiUrl+"cars";
   constructor(private httpClient: HttpClient) { }
 
-  getCars(): Observable<ListResponseModel<Car>> {
-    let path = this.apiUrl + "cars/getalldetails"
-    return this.httpClient.get<ListResponseModel<Car>>(path);
-  }
-  getCarsByBrandId(brandId: number): Observable<ListResponseModel<Car>> {
-    let path = this.apiUrl + "cars/getdetailsbybrandid/?brandId=" + brandId;
-    return this.httpClient.get<ListResponseModel<Car>>(path);
-  }
-  getCarsByColorId(colorId: number): Observable<ListResponseModel<Car>> {
-    let path = this.apiUrl + "cars/getbycolorid/?colorId=" + colorId;
-    return this.httpClient.get<ListResponseModel<Car>>(path);
-  }
 
-  getCarDetails(carId: number): Observable<SingleResponseModel<Car>> {
-    let path = this.apiUrl + "cars/getbycarid/?carId=" + carId;
-    return this.httpClient.get<SingleResponseModel<Car>>(path);
+  getHomepageCars(size:number):Observable<GenericResponseModel<CarForListingModel[]>>{
+    return this.httpClient.get<GenericResponseModel<CarForListingModel[]>>(this.apiUrl+'/get-homepage-cars?size='+size);
   }
-  getCarImagesById(carId: number): Observable<ListResponseModel<CarImage>> {
-    let path = this.apiUrl + "carimages/getbycarid?carId=" + carId;
-    return this.httpClient.get<ListResponseModel<CarImage>>(path);
+  getCarsForListings(size:number,page:number):Observable<PageableResponseModel<CarForListingModel[]>>{
+    return this.httpClient.get<PageableResponseModel<CarForListingModel[]>>(this.apiUrl+'?size='+size+"&page="+page);
   }
-  getCarByFilters(brandId: string,colorId: string): Observable<ListResponseModel<Car>> {
-    let path = this.apiUrl + "cars/getbyfilters?brandId=" + brandId + "&colorId=" + colorId;
-    console.log(path);
-    return this.httpClient.get<ListResponseModel<Car>>(path);
-  }
-
-  addCarWithImage(model:AddCarWithImageModel,file:File):Observable<ResponseModel>{
-      console.log(model);
-      let path = this.apiUrl + "cars/addwithimage";
-      let formData = new FormData();
-      formData.append('Image',file);
-      formData.append('BrandId',model.brandId.toString());
-      formData.append('ColorId',model.colorId.toString());
-      formData.append('ModelYear',model.modelYear.toString());
-      formData.append('DailyPrice',model.dailyPrice.toString());
-      formData.append('Name',model.carName);
-      console.log(path);
-      return this.httpClient.post<ResponseModel>(path,formData);
+  getCarsByFilters(size:number,page:number,brandId:number=0,colorId:number=0,minPrice:number=0,maxPrice:number=0,query:string=""){
+    let urlQuery = `?size=${size}&page=${page}&colorId=${colorId}&brandId=${brandId}&minPrice=${minPrice}&maxPrice=${maxPrice}&query=${query}`;
+    return this.httpClient.get<PageableResponseModel<CarForListingModel[]>>(this.apiUrl+'/get-by-filters'+urlQuery);
   }
 }

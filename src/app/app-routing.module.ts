@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginGuard } from './guards/login.guard';
+import { CarsComponent } from './pages/cars/cars.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { SearchPage } from './pages/search/search.component';
 
 const routes: Routes = [
-  {path:'' , pathMatch:"full" , component: HomepageComponent},
+  {path:'' , redirectTo:'homepage',pathMatch:'full'},
+  {path:'homepage',pathMatch:'full',component:HomepageComponent},
+  {path:'cars',pathMatch:'full',component:CarsComponent},
+  {path:'search',pathMatch:'full',component:SearchPage}
 ];
 
 @NgModule({
